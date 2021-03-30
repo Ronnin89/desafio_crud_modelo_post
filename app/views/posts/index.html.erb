@@ -8,6 +8,13 @@
   </div>
 </div>
 
+<%= form_with(url: root_path, method: :get, remote: true) do |form| %>
+
+  <%= form.text_field :q %>
+  <%= form.submit :search %>
+
+<% end %>
+
 <h1>Posts</h1>
 
 <table>
@@ -26,7 +33,7 @@
         <td><%= post.content %></td>
         <td><%= link_to 'Show', post, remote: true %></td>
         <td><%= link_to 'Edit', edit_post_path(post.id), remote: true %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', post, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
